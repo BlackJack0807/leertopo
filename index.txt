@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topografie Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+        main {
+            padding: 1em;
+        }
+        label, select, input, textarea {
+            display: block;
+            margin-bottom: 1em;
+        }
+        #interactieveKaart {
+            width: 100%;
+            height: 400px;
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Topografie Website</h1>
+    </header>
+    <main>
+        <label for="continenten">Kies een continent:</label>
+        <select id="continenten">
+            <option value="Europa">Europa</option>
+            <option value="Azië">Azië</option>
+            <option value="Afrika">Afrika</option>
+            <!-- Voeg hier meer continenten toe -->
+        </select>
+
+        <div id="interactieveKaart">
+            <!-- Kaart wordt hier ingevoegd -->
+        </div>
+
+        <h2>Contact</h2>
+        <form id="contactFormulier">
+            <label for="naam">Naam:</label>
+            <input type="text" id="naam" name="naam" required>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="bericht">Bericht:</label>
+            <textarea id="bericht" name="bericht" rows="4" cols="50" required></textarea>
+            <input type="submit" value="Verzenden">
+        </form>
+    </main>
+
+    <script>
+        document.getElementById('continenten').addEventListener('change', function() {
+            let continent = this.value;
+            let kaart = `<h3>${continent}</h3><p>Hier zou een interactieve kaart van ${continent} komen.</p>`;
+            document.getElementById('interactieveKaart').innerHTML = kaart;
+        });
+
+        document.getElementById('contactFormulier').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let naam = document.getElementById('naam').value;
+            let email = document.getElementById('email').value;
+            let bericht = document.getElementById('bericht').value;
+            console.log("Naam:", naam);
+            console.log("E-mail:", email);
+            console.log("Bericht:", bericht);
+            alert("Bedankt voor je bericht!");
+        });
+    </script>
+</body>
+</html>
